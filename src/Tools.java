@@ -1,5 +1,6 @@
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Tools {
@@ -46,7 +47,7 @@ public class Tools {
         for(int i=0;i<4;i++){
             for (int j=0;j<4;j++){
                 if(i!=j){
-                    if(num[i]==num[j]){
+                    if((num[i]==num[j])&&num[i]<0&&num[i]>13){
                         return false;
                     }
                 }
@@ -79,29 +80,75 @@ public class Tools {
         }
         return Integer.parseInt(card);
     }
-    public static void ifInputKeyboardOrRandom(String result,boolean isKeyboard){
-        if(isKeyboard){
-            String[] card = new String[4];
-
-            System.out.println("Masukkan kartu: ");
-            for(int i=0;i<4;i++){
-                card[i]=scan.next();
-            }
-            int[] num = new int[4];
-            for(int i=0;i<4;i++){
-                num[i] = cardToNum(card[i]);
-            }
-            for(int i=0;i<4;i++){
-                for(int j=0;j<4;j++){
-                    for(int k=0;k<4;k++){
-                        for(int l=0;l<4;l++){
-                            if(i!=j&&i!=k&&i!=l&&j!=k&&j!=l&&l!=k){
-                                Results.results(result,num[i],num[j],num[k],num[l]);
-                            }
+    private static void calculateResult(String result, int[] num) {
+        for(int i=0;i<4;i++){
+            for(int j=0;j<4;j++){
+                for(int k=0;k<4;k++){
+                    for(int l=0;l<4;l++){
+                        if(i!=j&&i!=k&&i!=l&&j!=k&&j!=l&&l!=k){
+                            Results.results(result,num[i],num[j],num[k],num[l]);
                         }
                     }
                 }
             }
         }
     }
+    public static String getRandom(String[] array) {
+        int rnd = new Random().nextInt(array.length);
+        return array[rnd];
+    }
+    public static void ifInputKeyboardOrRandom(String result,boolean isKeyboard){
+        if(isKeyboard){
+
+            String[] card = new String[4];
+            int[] num = new int[4];
+            boolean isNumValid = validationNumber(num[0],num[1],num[2],num[3]);
+
+            System.out.println("Masukkan kartu: ");
+            for(int i=0;i<4;i++){
+                card[i]=scan.next();
+            }
+
+            for(int i=0;i<4;i++){
+                num[i] = cardToNum(card[i]);
+            }
+
+
+            while (!isNumValid){
+                System.out.println("kartu sama atau melebihi batas masukkan kartu yang sesuai format: ");
+                for(int i=0;i<4;i++){
+                    card[i]=scan.next();
+                }
+                for(int i=0;i<4;i++){
+                    num[i] = cardToNum(card[i]);
+                }
+                isNumValid = validationNumber(num[0],num[1],num[2],num[3]);
+            }
+            calculateResult(result,num);
+        }else {
+
+            String[] cards = {"A","1","2","3","4","5","6","7","8","9","10","J","Q","K"};
+            int[] num = new int[4];
+            boolean isNumValid = validationNumber(num[0],num[1],num[2],num[3]);
+
+            String[] card = {getRandom(cards),getRandom(cards),getRandom(cards),getRandom(cards)};
+
+            for(int i=0;i<4;i++){
+                num[i] = cardToNum(card[i]);
+            }
+
+            while (!isNumValid){
+                for(int i=0;i<4;i++){
+                    card[i]=getRandom(cards);
+                }
+                for(int i=0;i<4;i++){
+                    num[i] = cardToNum(card[i]);
+                }
+                isNumValid = validationNumber(num[0],num[1],num[2],num[3]);
+            }
+            calculateResult(result,num);
+        }
+    }
+
+
 }
