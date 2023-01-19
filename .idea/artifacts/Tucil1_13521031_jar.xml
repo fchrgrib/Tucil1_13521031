@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Tucil1_13521031:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Tucil1_13521031_jar</output-path>
+    <root id="archive" name="Tucil1_13521031.jar">
+      <element id="module-output" name="Tucil1_13521031" />
+    </root>
+  </artifact>
+</component>
