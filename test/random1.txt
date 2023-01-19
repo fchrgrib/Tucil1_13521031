@@ -1,0 +1,5 @@
+Kartu yang dipilih:
+K 4 9 Q 
+
+Tidak ada solusi
+

@@ -1,7 +1,8 @@
 public class Results {
-    private static final Priority priority = new Priority();
+    private static Priority priority = new Priority();
     private static final String[] sym = {"+","-","/","*"};
-    public static String results(String result,int num1,int num2,int num3,int num4){
+    public static String results(int num1,int num2,int num3,int num4){
+        String result = "";
         for(int i=0;i<sym.length;i++){
             for(int j=0;j<sym.length;j++){
                 for(int k=0;k< sym.length;k++){
@@ -70,7 +71,7 @@ public class Results {
                                     ))
                             )),sym[k],Integer.toString(num4)
                     ))==24){
-                        result+= ("("+Math.round(num1) +sym[i]+"("+ Math.round(num2) +sym[j]+ Math.round(num3)+")"+sym[k]+ Math.round(num4)+"\n");
+                        result+= ("("+Math.round(num1) +sym[i]+"("+ Math.round(num2) +sym[j]+ Math.round(num3)+"))"+sym[k]+ Math.round(num4)+"\n");
                     }
 
                     if((priority.one(
@@ -95,7 +96,7 @@ public class Results {
                                     ))
                             ))
                     ))==24){
-                        result+= (Math.round(num1) +sym[i]+"(("+ Math.round(num2) +sym[j]+ Math.round(num3)+")"+sym[k]+ Math.round(num4)+")\n");
+                        result+= (Math.round(num1) +sym[i]+"("+ Math.round(num2) +sym[j]+"("+ Math.round(num3)+sym[k]+ Math.round(num4)+"))\n");
                     }
                     if((priority.one(
                             Double.toString( priority.one(Integer.toString(num1),sym[i],Integer.toString(num2) )),sym[j],
@@ -103,9 +104,10 @@ public class Results {
                     ))==24){
                         result+= ("("+Math.round(num1) +sym[i]+ Math.round(num2) +")"+sym[j]+"("+ Math.round(num3)+sym[k]+ Math.round(num4)+")\n");
                     }
+
                 }
             }
         }
-        return result;
+            return result;
     }
 }
