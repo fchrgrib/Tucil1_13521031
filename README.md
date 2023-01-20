@@ -12,7 +12,7 @@ Disusun untuk memenuhi Tugas Kecil 1 IF2211 Strategi Algoritma "Penyelesaian Per
 ## Deskripsi Singkat Program
 Program untuk mencari semua kemungkinan operasi dari empat bilangan untuk menghasilkan nilai 24. Terdapat dua opsi input pada program, yaitu input manual dan input random. Untuk input manual, program akan meminta empat input string.
 ## Struktur Program
-bash
+```bash
 .
 │   README.md
 │
@@ -42,7 +42,7 @@ bash
         random1.txt
         random2.txt
         random3.txt
-
+```
 ## Requirement Program
 * JDK
 
