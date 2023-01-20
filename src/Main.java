@@ -4,7 +4,9 @@ import java.util.Scanner;
 public class Main {
     private static final Scanner scan = new Scanner(System.in);
     public static void main(String[] args) throws IOException {
-        System.out.println("===========================SELAMAT DATANG DI PERMAINAN 24 SOLVE===========================");
+
+
+        Splashscreen.splashscreen();
         boolean isEnd = false;
         while (!isEnd){
             String res = "";

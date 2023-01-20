@@ -42,7 +42,7 @@ public class Tools {
         return pilih==1;
     }
 
-    public static boolean validationNumber(int num1,int num2,int num3,int num4){
+    private static boolean validationNumber(int num1,int num2,int num3,int num4){
 
         int[] num = {num1,num2,num3,num4};
         for (int i=0;i<4;i++){
@@ -84,7 +84,7 @@ public class Tools {
     }
 
     public static void writeResults(String res, String card) throws IOException {
-        System.out.println("masukkan lokasi penyimpanan dan format nama file:\ncontoh jika menggunakan Intellij : ./test/test.txt\ncontoh jika menggunakan Vscode : ../test/test.txt");
+        System.out.println("masukkan lokasi penyimpanan dan format nama file:\ncontoh cara menyimpan file : ./test/test.txt");
         String path = scan.next();
         FileWriter writeResult = new FileWriter(path);
         writeResult.write("Kartu yang dipilih:\n"+card+"\n\n");
@@ -103,7 +103,7 @@ public class Tools {
         }
         writeResult.close();
     }
-    public static int cardToNum(String card){
+    private static int cardToNum(String card){
         if(card.equals("A")){
             return 1;
         }
@@ -137,7 +137,7 @@ public class Tools {
         }
         return result;
     }
-    public static String getRandom(String[] array) {
+    private static String getRandom(String[] array) {
         int rnd = new Random().nextInt(array.length);
         return array[rnd];
     }
@@ -148,7 +148,7 @@ public class Tools {
             String[] card = new String[4];
             int[] num = new int[4];
 
-
+            tutorCard();
             System.out.println("Masukkan kartu: ");
             for(int i=0;i<4;i++){
                 card[i]=scan.next();
@@ -210,5 +210,7 @@ public class Tools {
         }
     }
 
-
+    private static void tutorCard(){
+        System.out.println("Contoh cara memasukkan kartu:\n A J 7 8\natau\nA\nJ\n7\n8\n");
+    }
 }
