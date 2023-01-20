@@ -33,6 +33,8 @@ bash
 |       └─── META-INF
 |             MANIFEST.MF
 │
+|
+|
 └───test
         inputKeyboard1.txt
         inputKeyboard2.txt
