@@ -24,7 +24,7 @@ public class Main {
             Instant end = Instant.now();
 
             System.out.println(result[1]);
-            System.out.println("\n\nTime execuiton: "+Duration.between(stopwatch,end));
+            System.out.println("\nTime execuiton: "+Duration.between(stopwatch,end)+"\n");
             boolean save= Tools.validationSave();
             if(save) Tools.writeResults(result[1],result[0]);
             isEnd = Tools.validationExit();
